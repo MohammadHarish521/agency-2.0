@@ -87,36 +87,85 @@ const services = [
 export default function Services() {
   const headerRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<HTMLDivElement[]>([]);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>(new Array(services.length).fill(null));
 
   useEffect(() => {
-    // Header animation
-    gsap.from(headerRef.current, {
-      opacity: 0,
-      y: 30,
-      duration: 0.8,
-      scrollTrigger: {
-        trigger: headerRef.current,
-        start: "top 80%",
-        end: "top 50%",
-        toggleActions: "play none none none",
-      },
-    });
+    let fallbackTimer: NodeJS.Timeout;
+    
+    // Wait for next tick to ensure refs are populated
+    const timer = setTimeout(() => {
+      // Set initial opacity to 0 for elements
+      if (headerRef.current) {
+        gsap.set(headerRef.current, { opacity: 0, y: 30 });
+      }
+      
+      const validCards = cardsRef.current.filter(Boolean) as HTMLDivElement[];
+      validCards.forEach((card) => {
+        if (card) {
+          gsap.set(card, { opacity: 0, y: 40, scale: 0.95 });
+        }
+      });
 
-    // Stagger cards animation
-    gsap.from(cardsRef.current, {
-      opacity: 0,
-      y: 40,
-      scale: 0.95,
-      duration: 0.6,
-      stagger: 0.1,
-      scrollTrigger: {
-        trigger: gridRef.current,
-        start: "top 75%",
-        end: "top 50%",
-        toggleActions: "play none none none",
-      },
-    });
+      // Fallback timer to show content if ScrollTrigger doesn't fire
+      fallbackTimer = setTimeout(() => {
+        if (headerRef.current && gsap.getProperty(headerRef.current, "opacity") === 0) {
+          gsap.to(headerRef.current, { opacity: 1, y: 0, duration: 0.5 });
+        }
+        validCards.forEach((card) => {
+          if (card && gsap.getProperty(card, "opacity") === 0) {
+            gsap.to(card, { opacity: 1, y: 0, scale: 1, duration: 0.5 });
+          }
+        });
+      }, 2000);
+
+      // Header animation
+      if (headerRef.current) {
+        gsap.to(headerRef.current, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          scrollTrigger: {
+            trigger: headerRef.current,
+            start: "top 80%",
+            end: "top 50%",
+            toggleActions: "play none none none",
+            onEnter: () => {
+              if (fallbackTimer) clearTimeout(fallbackTimer);
+            },
+          },
+        });
+      }
+
+      // Stagger cards animation
+      if (gridRef.current && validCards.length > 0) {
+        gsap.to(validCards, {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.6,
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: gridRef.current,
+            start: "top 75%",
+            end: "top 50%",
+            toggleActions: "play none none none",
+            onEnter: () => {
+              if (fallbackTimer) clearTimeout(fallbackTimer);
+            },
+          },
+        });
+      }
+
+      // Refresh ScrollTrigger to recalculate positions
+      ScrollTrigger.refresh();
+    }, 100);
+
+    // Cleanup function
+    return () => {
+      clearTimeout(timer);
+      if (fallbackTimer) clearTimeout(fallbackTimer);
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
   }, []);
 
   return (
@@ -139,7 +188,7 @@ export default function Services() {
             <div 
               key={index}
               ref={(el) => {
-                if (el) cardsRef.current[index] = el;
+                cardsRef.current[index] = el;
               }}
               className="group rounded-[2.5rem] bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col"
               onMouseEnter={(e) => {

@@ -1,26 +1,247 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+body {
+  font-family: var(--font-body), "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-heading {
+  font-family: var(--font-body), "Inter", sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Hide Scrollbar but keep functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Subtle grid pattern for backgrounds */
+.bg-grid {
+  background-size: 40px 40px;
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.02) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+}
+
+/* Marquee Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Framer Hero Text Style */
+.hero-framer-text {
+  font-family: var(--font-body), "Inter", sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.06em;
+  line-height: 120%;
+  color: #000;
+  text-align: center;
+}
+
+/* Responsive sizing to match design intent while being mobile friendly */
+.hero-framer-text {
+  font-size: 3rem; /* ~48px mobile */
+}
+
+@media (min-width: 768px) {
+  .hero-framer-text {
+    font-size: 64px; /* Desktop target size */
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Animated blob background */
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Framer Button Styles */
+button {
+  font-family: var(--font-body), "Inter", sans-serif;
+  font-weight: 500 !important;
+  font-size: 16px;
+  letter-spacing: -0.03em;
+  line-height: 1em;
+  text-align: start;
+  text-decoration: none;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Liquid glass effect for dark buttons */
+button[class*="bg-gray-900"],
+button[class*="bg-black"] {
+  background: linear-gradient(
+    135deg,
+    rgba(10, 10, 10, 0.95) 0%,
+    rgba(20, 20, 20, 0.98) 100%
+  ) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button[class*="bg-gray-900"]::before,
+button[class*="bg-black"]::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+button[class*="bg-gray-900"]:hover::before,
+button[class*="bg-black"]:hover::before {
+  left: 100%;
+}
+
+button[class*="bg-gray-900"]:hover,
+button[class*="bg-black"]:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(15, 15, 15, 0.98) 0%,
+    rgba(25, 25, 25, 1) 100%
+  ) !important;
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.6);
+  transform: translateY(-1px);
+}
+
+button[class*="bg-gray-900"]:active,
+button[class*="bg-black"]:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Button-like anchor tags */
+a.rounded-full[class*="bg-"],
+a.rounded-full[class*="px-"] {
+  font-family: var(--font-body), "Inter", sans-serif;
+  font-weight: 500 !important;
+  letter-spacing: -0.03em;
+  line-height: 1em;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Liquid glass effect for dark anchor buttons */
+a[class*="bg-gray-900"],
+a[class*="bg-black"] {
+  background: linear-gradient(
+    135deg,
+    rgba(10, 10, 10, 0.95) 0%,
+    rgba(20, 20, 20, 0.98) 100%
+  ) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+a[class*="bg-gray-900"]::before,
+a[class*="bg-black"]::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+a[class*="bg-gray-900"]:hover::before,
+a[class*="bg-black"]:hover::before {
+  left: 100%;
+}
+
+a[class*="bg-gray-900"]:hover,
+a[class*="bg-black"]:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(15, 15, 15, 0.98) 0%,
+    rgba(25, 25, 25, 1) 100%
+  ) !important;
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.6);
+  transform: translateY(-1px);
+}
+
+button strong,
+button b,
+button[class*="font-bold"] {
+  font-weight: 700 !important;
+}
+
+/* Override font-semibold and font-medium on buttons to use 500 weight */
+button[class*="font-semibold"],
+button[class*="font-medium"] {
+  font-weight: 500 !important;
 }

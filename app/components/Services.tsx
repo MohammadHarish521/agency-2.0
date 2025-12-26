@@ -18,59 +18,345 @@ import { FaMicrosoft } from "react-icons/fa";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Animated Visual Components
+function BrandIdentityVisual() {
+  const color1Ref = useRef<HTMLDivElement>(null);
+  const color2Ref = useRef<HTMLDivElement>(null);
+  const color3Ref = useRef<HTMLDivElement>(null);
+  const logoRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
+    tl.to([color1Ref.current, color2Ref.current, color3Ref.current], {
+      scale: 1.1,
+      duration: 0.5,
+      stagger: 0.1,
+      ease: "power2.inOut",
+    })
+    .to([color1Ref.current, color2Ref.current, color3Ref.current], {
+      scale: 1,
+      duration: 0.5,
+      stagger: 0.1,
+      ease: "power2.inOut",
+    });
+    
+    gsap.to(logoRef.current, {
+      rotation: 360,
+      duration: 8,
+      repeat: -1,
+      ease: "none",
+    });
+  }, []);
+
+  return (
+    <div className="relative w-full h-full bg-gradient-to-br from-purple-50 to-pink-50 flex items-center justify-center p-8">
+      {/* Animated Logo Circle */}
+      <div ref={logoRef} className="absolute w-20 h-20 border-4 border-purple-600 rounded-full"></div>
+      
+      {/* Color Swatches */}
+      <div className="flex gap-4 items-center">
+        <div ref={color1Ref} className="w-16 h-20 bg-purple-600 rounded-lg shadow-lg"></div>
+        <div ref={color2Ref} className="w-16 h-20 bg-pink-500 rounded-lg shadow-lg"></div>
+        <div ref={color3Ref} className="w-16 h-20 bg-rose-400 rounded-lg shadow-lg"></div>
+      </div>
+    </div>
+  );
+}
+
+function WebsiteDesignVisual() {
+  const bar1Ref = useRef<HTMLDivElement>(null);
+  const bar2Ref = useRef<HTMLDivElement>(null);
+  const bar3Ref = useRef<HTMLDivElement>(null);
+  const circleRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const tl = gsap.timeline({ repeat: -1 });
+    tl.to([bar1Ref.current, bar2Ref.current, bar3Ref.current], {
+      height: "60%",
+      duration: 0.6,
+      stagger: 0.1,
+      ease: "power2.inOut",
+    })
+    .to([bar1Ref.current, bar2Ref.current, bar3Ref.current], {
+      height: "40%",
+      duration: 0.6,
+      stagger: 0.1,
+      ease: "power2.inOut",
+    });
+    
+    gsap.to(circleRef.current, {
+      scale: [1, 1.2, 1],
+      duration: 2,
+      repeat: -1,
+      ease: "power2.inOut",
+    });
+  }, []);
+
+  return (
+    <div className="relative w-full h-full bg-gradient-to-br from-blue-50 to-cyan-50 flex items-center justify-center p-8">
+      {/* Animated Bars */}
+      <div className="flex items-end gap-3 h-32">
+        <div ref={bar1Ref} className="w-12 bg-blue-600 rounded-t-lg shadow-lg" style={{ height: "40%" }}></div>
+        <div ref={bar2Ref} className="w-12 bg-cyan-500 rounded-t-lg shadow-lg" style={{ height: "60%" }}></div>
+        <div ref={bar3Ref} className="w-12 bg-blue-400 rounded-t-lg shadow-lg" style={{ height: "50%" }}></div>
+      </div>
+      
+      {/* Floating Circle */}
+      <div ref={circleRef} className="absolute top-4 right-4 w-8 h-8 bg-blue-600 rounded-full shadow-lg"></div>
+    </div>
+  );
+}
+
+function ProductDesignVisual() {
+  const card1Ref = useRef<HTMLDivElement>(null);
+  const card2Ref = useRef<HTMLDivElement>(null);
+  const card3Ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const tl = gsap.timeline({ repeat: -1, repeatDelay: 0.5 });
+    tl.to([card1Ref.current, card2Ref.current, card3Ref.current], {
+      y: -10,
+      duration: 0.5,
+      stagger: 0.15,
+      ease: "power2.out",
+    })
+    .to([card1Ref.current, card2Ref.current, card3Ref.current], {
+      y: 0,
+      duration: 0.5,
+      stagger: 0.15,
+      ease: "power2.in",
+    });
+  }, []);
+
+  return (
+    <div className="relative w-full h-full bg-gradient-to-br from-indigo-50 to-purple-50 flex items-center justify-center p-6 gap-2">
+      <div ref={card1Ref} className="w-20 h-24 bg-white rounded-lg shadow-md border border-gray-200 flex items-center justify-center">
+        <div className="w-8 h-8 bg-indigo-600 rounded"></div>
+      </div>
+      <div ref={card2Ref} className="w-20 h-24 bg-white rounded-lg shadow-md border border-gray-200 flex items-center justify-center">
+        <div className="w-8 h-8 bg-purple-600 rounded"></div>
+      </div>
+      <div ref={card3Ref} className="w-20 h-24 bg-white rounded-lg shadow-md border border-gray-200 flex items-center justify-center">
+        <div className="w-8 h-8 bg-indigo-400 rounded"></div>
+      </div>
+    </div>
+  );
+}
+
+function WebDevVisual() {
+  const codeLine1Ref = useRef<HTMLDivElement>(null);
+  const codeLine2Ref = useRef<HTMLDivElement>(null);
+  const codeLine3Ref = useRef<HTMLDivElement>(null);
+  const cursorRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const tl = gsap.timeline({ repeat: -1 });
+    tl.to([codeLine1Ref.current, codeLine2Ref.current, codeLine3Ref.current], {
+      opacity: [0.5, 1, 0.5],
+      duration: 1,
+      stagger: 0.2,
+      ease: "power2.inOut",
+    });
+    
+    gsap.to(cursorRef.current, {
+      opacity: [1, 0, 1],
+      duration: 1,
+      repeat: -1,
+      ease: "power2.inOut",
+    });
+  }, []);
+
+  return (
+    <div className="relative w-full h-full bg-gradient-to-br from-blue-50 to-indigo-50 flex items-center justify-center p-8">
+      <div className="w-full max-w-xs">
+        <div className="bg-gray-900 rounded-lg p-4 font-mono text-sm">
+          <div ref={codeLine1Ref} className="text-green-400 mb-2">
+            <span className="text-blue-400">const</span>{" "}
+            <span className="text-purple-400">app</span>{" "}
+            <span className="text-white">=</span>{" "}
+            <span className="text-yellow-400">express</span>
+            <span className="text-white">()</span>
+          </div>
+          <div ref={codeLine2Ref} className="text-green-400 mb-2">
+            <span className="text-blue-400">app</span>
+            <span className="text-white">.</span>
+            <span className="text-yellow-400">get</span>
+            <span className="text-white">(</span>
+            <span className="text-orange-400">'/'</span>
+            <span className="text-white">, ...)</span>
+          </div>
+          <div ref={codeLine3Ref} className="text-green-400 flex items-center">
+            <span className="text-blue-400">app</span>
+            <span className="text-white">.</span>
+            <span className="text-yellow-400">listen</span>
+            <span className="text-white">(</span>
+            <span className="text-orange-400">3000</span>
+            <span className="text-white">)</span>
+            <span ref={cursorRef} className="ml-1 w-2 h-4 bg-white inline-block"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function AppDevVisual() {
+  const screenRef = useRef<HTMLDivElement>(null);
+  const icon1Ref = useRef<HTMLDivElement>(null);
+  const icon2Ref = useRef<HTMLDivElement>(null);
+  const icon3Ref = useRef<HTMLDivElement>(null);
+  const icon4Ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const icons = [icon1Ref.current, icon2Ref.current, icon3Ref.current, icon4Ref.current];
+    
+    icons.forEach((icon, i) => {
+      if (icon) {
+        gsap.to(icon, {
+          y: [0, -8, 0],
+          duration: 1.5,
+          repeat: -1,
+          delay: i * 0.2,
+          ease: "power2.inOut",
+        });
+      }
+    });
+    
+    gsap.to(screenRef.current, {
+      scale: [1, 1.02, 1],
+      duration: 2,
+      repeat: -1,
+      ease: "power2.inOut",
+    });
+  }, []);
+
+  return (
+    <div className="relative w-full h-full bg-gradient-to-br from-purple-50 to-pink-50 flex items-center justify-center p-8">
+      <div ref={screenRef} className="bg-white rounded-2xl shadow-xl border border-gray-200 p-6 w-48 h-64 flex flex-col">
+        {/* Status Bar */}
+        <div className="flex justify-between items-center mb-4 pb-2 border-b border-gray-100">
+          <div className="text-xs font-semibold text-gray-900">9:41</div>
+          <div className="flex gap-1">
+            <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
+            <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
+            <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
+          </div>
+        </div>
+        
+        {/* App Icons Grid */}
+        <div className="grid grid-cols-2 gap-4 flex-1">
+          <div ref={icon1Ref} className="w-16 h-16 bg-purple-600 rounded-xl flex items-center justify-center shadow-md">
+            <div className="w-8 h-8 bg-white rounded-lg"></div>
+          </div>
+          <div ref={icon2Ref} className="w-16 h-16 bg-pink-500 rounded-xl flex items-center justify-center shadow-md">
+            <div className="w-8 h-8 bg-white rounded-lg"></div>
+          </div>
+          <div ref={icon3Ref} className="w-16 h-16 bg-purple-400 rounded-xl flex items-center justify-center shadow-md">
+            <div className="w-8 h-8 bg-white rounded-lg"></div>
+          </div>
+          <div ref={icon4Ref} className="w-16 h-16 bg-pink-400 rounded-xl flex items-center justify-center shadow-md">
+            <div className="w-8 h-8 bg-white rounded-lg"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function PitchDeckVisual() {
+  const slide1Ref = useRef<HTMLDivElement>(null);
+  const slide2Ref = useRef<HTMLDivElement>(null);
+  const slide3Ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
+    tl.to([slide1Ref.current, slide2Ref.current, slide3Ref.current], {
+      x: -20,
+      opacity: 0.7,
+      duration: 0.5,
+      stagger: 0.1,
+      ease: "power2.inOut",
+    })
+    .to([slide1Ref.current, slide2Ref.current, slide3Ref.current], {
+      x: 0,
+      opacity: 1,
+      duration: 0.5,
+      stagger: 0.1,
+      ease: "power2.inOut",
+    });
+  }, []);
+
+  return (
+    <div className="relative w-full h-full bg-gradient-to-br from-gray-50 to-slate-50 flex items-center justify-center p-6 gap-2">
+      <div ref={slide1Ref} className="w-16 h-20 bg-white rounded shadow-lg border border-gray-200 flex flex-col items-center justify-center gap-1">
+        <div className="w-8 h-1 bg-gray-400 rounded"></div>
+        <div className="w-6 h-1 bg-gray-300 rounded"></div>
+      </div>
+      <div ref={slide2Ref} className="w-16 h-20 bg-white rounded shadow-lg border border-gray-200 flex flex-col items-center justify-center gap-1">
+        <div className="w-8 h-1 bg-gray-400 rounded"></div>
+        <div className="w-6 h-1 bg-gray-300 rounded"></div>
+      </div>
+      <div ref={slide3Ref} className="w-16 h-20 bg-white rounded shadow-lg border border-gray-200 flex flex-col items-center justify-center gap-1">
+        <div className="w-8 h-1 bg-gray-400 rounded"></div>
+        <div className="w-6 h-1 bg-gray-300 rounded"></div>
+      </div>
+    </div>
+  );
+}
+
 const services = [
   {
     title: "Brand Identity",
     description: "Get a differentiated and unique brand identity to stand out your product from competitors.",
     icons: [
-      { Icon: SiAdobeillustrator, color: "text-[#FF9A00] bg-[#330000]" }, // Ai style
-      { Icon: SiFigma, color: "text-purple-500 bg-gray-900" },
+      { type: "icon", Icon: SiAdobeillustrator, color: "text-[#FF9A00] bg-[#330000]" },
+      { type: "image", src: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/figma.svg", alt: "Figma", className: "w-5 h-5" },
     ],
-    imageGradient: "from-pink-500/20 to-rose-500/20",
-    image: "https://images.unsplash.com/photo-1626785774573-4b79931434f3?auto=format&fit=crop&q=80&w=800"
+    visual: BrandIdentityVisual,
+    rotation: -2,
   },
   {
     title: "Website Design",
     description: "Turn your website into a eye-dropping marketing machine to turn visitors into customers.",
     icons: [
-      { Icon: SiFigma, color: "text-purple-500 bg-gray-900" },
-      { Icon: SiFramer, color: "text-black bg-white" },
+      { type: "image", src: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/figma.svg", alt: "Figma", className: "w-5 h-5" },
+      { type: "icon", Icon: SiFramer, color: "text-black bg-white" },
     ],
-    imageGradient: "from-blue-500/20 to-cyan-500/20",
-    image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=800"
+    visual: WebsiteDesignVisual,
+    rotation: 1.5,
   },
   {
     title: "Product Design",
     description: "Make your product so delightful to, it instantly becomes the thing to talk about in the industry.",
     icons: [
-      { Icon: SiFigma, color: "text-purple-500 bg-gray-900" },
-      { Icon: SiNotion, color: "text-black bg-white" },
-      { Icon: SiLinear, color: "text-blue-500 bg-gray-900" },
+      { type: "image", src: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/figma.svg", alt: "Figma", className: "w-5 h-5" },
+      { type: "icon", Icon: SiNotion, color: "text-black bg-white" },
+      { type: "icon", Icon: SiLinear, color: "text-blue-500 bg-gray-900" },
     ],
-    imageGradient: "from-purple-500/20 to-indigo-500/20",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800"
+    visual: ProductDesignVisual,
+    rotation: -1.5,
   },
   {
-    title: "No Code Development",
-    description: "Get your website developed in a blazing fast speed and have complete control as you scale.",
+    title: "Web Development",
+    description: "Build fast, scalable, and modern web applications with cutting-edge technologies and best practices.",
     icons: [
+      { Icon: HiCodeBracket, color: "text-blue-600 bg-blue-50" },
       { Icon: SiFramer, color: "text-black bg-white" },
       { Icon: SiWebflow, color: "text-blue-600 bg-white" },
-      { Icon: HiCodeBracket, color: "text-pink-500 bg-pink-50" },
     ],
-    imageGradient: "from-emerald-500/20 to-green-500/20",
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800"
+    visual: WebDevVisual,
+    rotation: 1,
   },
   {
-    title: "3D Design & Motion",
-    description: "Elevate your brand by adding seamless 3D and motion animations to delight users.",
+    title: "App Development",
+    description: "Create native and cross-platform mobile applications that deliver exceptional user experiences.",
     icons: [
-      { Icon: HiCube, color: "text-gray-900 bg-gray-100" }, // Spline-ish
-      { Icon: SiAdobeaftereffects, color: "text-purple-600 bg-[#00005b]" },
-      { Icon: SiBlender, color: "text-orange-500 bg-white" },
+      { Icon: HiCube, color: "text-purple-600 bg-purple-50" },
+      { Icon: SiFramer, color: "text-black bg-white" },
+      { Icon: HiCodeBracket, color: "text-pink-500 bg-pink-50" },
     ],
-    imageGradient: "from-orange-500/20 to-amber-500/20",
-    image: "https://images.unsplash.com/photo-1617791160505-6f00504e3caf?auto=format&fit=crop&q=80&w=800"
+    visual: AppDevVisual,
+    rotation: -2.5,
   },
   {
     title: "Pitch Deck & Collaterals",
@@ -79,8 +365,8 @@ const services = [
       { Icon: FaMicrosoft, color: "text-orange-600 bg-white" },
       { Icon: HiPresentationChartBar, color: "text-blue-500 bg-blue-50" },
     ],
-    imageGradient: "from-gray-500/20 to-slate-500/20",
-    image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800"
+    visual: PitchDeckVisual,
+    rotation: 1.2,
   },
 ];
 
@@ -88,25 +374,31 @@ export default function Services() {
   const headerRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>(new Array(services.length).fill(null));
+  const visualRefs = useRef<(HTMLDivElement | null)[]>(new Array(services.length).fill(null));
 
   useEffect(() => {
     let fallbackTimer: NodeJS.Timeout;
     
-    // Wait for next tick to ensure refs are populated
     const timer = setTimeout(() => {
-      // Set initial opacity to 0 for elements
       if (headerRef.current) {
         gsap.set(headerRef.current, { opacity: 0, y: 30 });
       }
       
       const validCards = cardsRef.current.filter(Boolean) as HTMLDivElement[];
+      const validVisuals = visualRefs.current.filter(Boolean) as HTMLDivElement[];
+      
       validCards.forEach((card) => {
         if (card) {
           gsap.set(card, { opacity: 0, y: 40, scale: 0.95 });
         }
       });
 
-      // Fallback timer to show content if ScrollTrigger doesn't fire
+      validVisuals.forEach((visual, index) => {
+        if (visual) {
+          gsap.set(visual, { opacity: 0, scale: 0.8, rotation: 0 });
+        }
+      });
+
       fallbackTimer = setTimeout(() => {
         if (headerRef.current && gsap.getProperty(headerRef.current, "opacity") === 0) {
           gsap.to(headerRef.current, { opacity: 1, y: 0, duration: 0.5 });
@@ -114,6 +406,11 @@ export default function Services() {
         validCards.forEach((card) => {
           if (card && gsap.getProperty(card, "opacity") === 0) {
             gsap.to(card, { opacity: 1, y: 0, scale: 1, duration: 0.5 });
+          }
+        });
+        validVisuals.forEach((visual) => {
+          if (visual && gsap.getProperty(visual, "opacity") === 0) {
+            gsap.to(visual, { opacity: 1, scale: 1, duration: 0.5 });
           }
         });
       }, 2000);
@@ -156,11 +453,30 @@ export default function Services() {
         });
       }
 
-      // Refresh ScrollTrigger to recalculate positions
+      // Visual animations with rotation and bounce
+      validVisuals.forEach((visual, index) => {
+        if (visual) {
+          const rotation = services[index]?.rotation || 0;
+          gsap.to(visual, {
+            opacity: 1,
+            scale: 1,
+            rotation: rotation,
+            duration: 0.8,
+            delay: index * 0.1 + 0.2,
+            ease: "back.out(1.2)",
+            scrollTrigger: {
+              trigger: visual,
+              start: "top 85%",
+              end: "top 60%",
+              toggleActions: "play none none none",
+            },
+          });
+        }
+      });
+
       ScrollTrigger.refresh();
     }, 100);
 
-    // Cleanup function
     return () => {
       clearTimeout(timer);
       if (fallbackTimer) clearTimeout(fallbackTimer);
@@ -184,61 +500,89 @@ export default function Services() {
 
         {/* Grid */}
         <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-          {services.map((service, index) => (
-            <div 
-              key={index}
-              ref={(el) => {
-                cardsRef.current[index] = el;
-              }}
-              className="group rounded-[2.5rem] bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col"
-              onMouseEnter={(e) => {
-                gsap.to(e.currentTarget, {
-                  y: -8,
-                  scale: 1.02,
-                  duration: 0.3,
-                  ease: "power2.out",
-                });
-              }}
-              onMouseLeave={(e) => {
-                gsap.to(e.currentTarget, {
-                  y: 0,
-                  scale: 1,
-                  duration: 0.3,
-                  ease: "power2.out",
-                });
-              }}
-            >
-              {/* Image Area */}
-              <div className="h-64 w-full relative overflow-hidden bg-gray-50">
-                <div className={`absolute inset-0 bg-gradient-to-br ${service.imageGradient} opacity-50`}></div>
-                <img 
-                  src={service.image} 
-                  alt={service.title}
-                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 opacity-80"
-                />
-              </div>
+          {services.map((service, index) => {
+            const VisualComponent = service.visual;
+            return (
+              <div 
+                key={index}
+                ref={(el) => {
+                  cardsRef.current[index] = el;
+                }}
+                className="group rounded-[2.5rem] bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col"
+                onMouseEnter={(e) => {
+                  gsap.to(e.currentTarget, {
+                    y: -8,
+                    scale: 1.02,
+                    duration: 0.3,
+                    ease: "power2.out",
+                  });
+                  if (visualRefs.current[index]) {
+                    const baseRotation = service.rotation || 0;
+                    gsap.to(visualRefs.current[index], {
+                      rotation: baseRotation * 1.5,
+                      scale: 1.05,
+                      duration: 0.3,
+                      ease: "power2.out",
+                    });
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  gsap.to(e.currentTarget, {
+                    y: 0,
+                    scale: 1,
+                    duration: 0.3,
+                    ease: "power2.out",
+                  });
+                  if (visualRefs.current[index]) {
+                    gsap.to(visualRefs.current[index], {
+                      rotation: service.rotation || 0,
+                      scale: 1,
+                      duration: 0.3,
+                      ease: "power2.out",
+                    });
+                  }
+                }}
+              >
+                {/* Animated Visual Area */}
+                <div 
+                  ref={(el) => {
+                    visualRefs.current[index] = el;
+                  }}
+                  className="h-64 w-full relative overflow-hidden"
+                >
+                  <VisualComponent />
+                </div>
 
-              {/* Content Area - Negative Margin for overlap effect */}
-              <div className="relative z-10 -mt-12 bg-white rounded-t-[2.5rem] px-8 pt-8 pb-10 flex-1 flex flex-col border-t border-gray-50">
-                 {/* Icons Row */}
-                 <div className="flex gap-3 mb-6">
-                   {service.icons.map((IconData, i) => (
-                     <div key={i} className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center border border-gray-100 shadow-sm">
-                       <IconData.Icon className={`w-5 h-5 ${IconData.color.includes('text') ? IconData.color : 'text-gray-700'}`} />
-                     </div>
-                   ))}
-                 </div>
+                {/* Content Area - Negative Margin for overlap effect */}
+                <div className="relative z-10 -mt-12 bg-white rounded-t-[2.5rem] px-8 pt-8 pb-10 flex-1 flex flex-col border-t border-gray-50">
+                   {/* Icons Row */}
+                   <div className="flex gap-3 mb-6">
+                     {service.icons.map((IconData, i) => (
+                       <div key={i} className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center border border-gray-100 shadow-sm">
+                         {IconData.type === "image" ? (
+                           <img 
+                             src={IconData.src} 
+                             alt={IconData.alt || "Logo"} 
+                             className={IconData.className || "w-5 h-5 object-contain"}
+                           />
+                         ) : (
+                           <IconData.Icon className={`w-5 h-5 ${IconData.color.includes('text') ? IconData.color : 'text-gray-700'}`} />
+                         )}
+                       </div>
+                     ))}
+                   </div>
 
-                 <h3 className="font-heading text-2xl font-semibold text-gray-900 mb-3">
-                   {service.title}
-                 </h3>
-                 
-                 <p className="text-gray-500 leading-relaxed text-sm md:text-base">
-                   {service.description}
-                 </p>
+                   <h3 className="font-heading text-2xl font-semibold text-gray-900 mb-3">
+                     {service.title}
+                   </h3>
+                   
+                   <p className="text-gray-500 leading-relaxed text-sm md:text-base">
+                     {service.description}
+                   </p>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Footer Actions */}
@@ -304,4 +648,3 @@ export default function Services() {
     </section>
   );
 }
-

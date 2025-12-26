@@ -1,17 +1,11 @@
 import type { Metadata } from "next";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { Figtree } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
+const figtree = Figtree({
   variable: "--font-body",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
-});
-
-const plusJakartaSans = Plus_Jakarta_Sans({
-  variable: "--font-heading",
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -28,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${plusJakartaSans.variable} antialiased bg-gray-50 text-gray-900 selection:bg-gray-900 selection:text-white relative min-h-screen overflow-x-hidden`}
+        className={`${figtree.variable} antialiased bg-gray-50 text-gray-900 selection:bg-gray-900 selection:text-white relative min-h-screen overflow-x-hidden`}
       >
         {/* Animated gradient mesh background */}
         <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10">

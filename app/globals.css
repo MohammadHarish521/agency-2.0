@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 body {
-  font-family: var(--font-body), "Inter", sans-serif;
+  font-family: var(--font-body), "Figtree", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -13,7 +13,7 @@ h4,
 h5,
 h6,
 .font-heading {
-  font-family: var(--font-body), "Inter", sans-serif;
+  font-family: var(--font-body), "Figtree", sans-serif;
 }
 
 /* Hide Scrollbar but keep functionality */
@@ -23,6 +23,22 @@ h6,
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Hide scrollbar in marquee containers */
+.marquee-container,
+.marquee-container * {
+  overflow: hidden !important;
+}
+.marquee-container *::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* Ensure ChatButton is positioned on the right */
+#chat-button {
+  right: 1.5rem !important;
+  left: auto !important;
+  position: fixed !important;
 }
 
 /* Subtle grid pattern for backgrounds */
@@ -51,7 +67,7 @@ h6,
 
 /* Framer Hero Text Style */
 .hero-framer-text {
-  font-family: var(--font-body), "Inter", sans-serif;
+  font-family: var(--font-body), "Figtree", sans-serif;
   font-weight: 500;
   letter-spacing: -0.06em;
   line-height: 120%;
@@ -100,7 +116,7 @@ h6,
 
 /* Framer Button Styles */
 button {
-  font-family: var(--font-body), "Inter", sans-serif;
+  font-family: var(--font-body), "Figtree", sans-serif;
   font-weight: 500 !important;
   font-size: 16px;
   letter-spacing: -0.03em;
@@ -175,7 +191,7 @@ button[class*="bg-black"]:active {
 /* Button-like anchor tags */
 a.rounded-full[class*="bg-"],
 a.rounded-full[class*="px-"] {
-  font-family: var(--font-body), "Inter", sans-serif;
+  font-family: var(--font-body), "Figtree", sans-serif;
   font-weight: 500 !important;
   letter-spacing: -0.03em;
   line-height: 1em;

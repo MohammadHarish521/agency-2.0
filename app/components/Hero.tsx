@@ -66,13 +66,13 @@ export default function Hero() {
 
         {/* Headline */}
         <h1 ref={headlineRef} className="hero-framer-text mb-8 max-w-4xl mx-auto">
-          We Build and Launch Your<br className="hidden md:block" />
-          Startup MVP in Just 2 Weeks
+          We Build Web & Mobile Apps<br className="hidden md:block" />
+          That Users Actually Want to Use
         </h1>
 
         {/* Subheadline */}
         <p ref={subheadlineRef} className="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed mb-10 font-normal">
-          LaunchPad Labs builds and ships investor-ready MVPs for founders
+          From sleek web applications to powerful mobile apps—we craft digital products that combine beautiful design with robust engineering to drive real business results.
         </p>
 
         {/* Hero CTA */}

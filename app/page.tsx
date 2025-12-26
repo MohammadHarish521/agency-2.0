@@ -1,4 +1,3 @@
-import BentoGrid from "./components/BentoGrid";
 import ChatButton from "./components/ChatButton";
 import FAQ from "./components/FAQ";
 import FinalCTA from "./components/FinalCTA";
@@ -7,6 +6,8 @@ import Hero from "./components/Hero";
 import LogoCloud from "./components/LogoCloud";
 import Navbar from "./components/Navbar";
 import Pricing from "./components/Pricing";
+import ProjectMarquee from "./components/ProjectMarquee";
+import Projects from "./components/Projects";
 import Services from "./components/Services";
 import Testimonials from "./components/Testimonials";
 import WorkflowSection from "./components/WorkflowSection";
@@ -16,10 +17,11 @@ export default function Home() {
     <div className="relative min-h-screen">
       <Navbar />
       <Hero />
-      <BentoGrid />
+      <ProjectMarquee />
       <WorkflowSection />
       <LogoCloud />
       <Services />
+      <Projects />
       <Testimonials />
       <Pricing />
       <FAQ />

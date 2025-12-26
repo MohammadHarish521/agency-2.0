@@ -1,35 +1,136 @@
 "use client";
 
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { HiArrowUpRight, HiCursorArrowRays, HiPaintBrush, HiCheckCircle, HiCodeBracket, HiChartBar } from "react-icons/hi2";
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function WorkflowSection() {
+  const headerRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>(new Array(3).fill(null));
+
+  useEffect(() => {
+    let fallbackTimer: NodeJS.Timeout;
+    
+    const timer = setTimeout(() => {
+      if (headerRef.current) {
+        gsap.set(headerRef.current, { opacity: 0, y: 30 });
+      }
+      
+      const validCards = cardsRef.current.filter(Boolean) as HTMLDivElement[];
+      
+      validCards.forEach((card) => {
+        if (card) {
+          gsap.set(card, { opacity: 0, y: 40, scale: 0.95 });
+        }
+      });
+
+      fallbackTimer = setTimeout(() => {
+        if (headerRef.current && gsap.getProperty(headerRef.current, "opacity") === 0) {
+          gsap.to(headerRef.current, { opacity: 1, y: 0, duration: 0.5 });
+        }
+        validCards.forEach((card) => {
+          if (card && gsap.getProperty(card, "opacity") === 0) {
+            gsap.to(card, { opacity: 1, y: 0, scale: 1, duration: 0.5 });
+          }
+        });
+      }, 2000);
+
+      // Header animation
+      if (headerRef.current) {
+        gsap.to(headerRef.current, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          scrollTrigger: {
+            trigger: headerRef.current,
+            start: "top 80%",
+            end: "top 50%",
+            toggleActions: "play none none none",
+            onEnter: () => {
+              if (fallbackTimer) clearTimeout(fallbackTimer);
+            },
+          },
+        });
+      }
+
+      // Stagger cards animation
+      if (gridRef.current && validCards.length > 0) {
+        gsap.to(validCards, {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.6,
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: gridRef.current,
+            start: "top 75%",
+            end: "top 50%",
+            toggleActions: "play none none none",
+            onEnter: () => {
+              if (fallbackTimer) clearTimeout(fallbackTimer);
+            },
+          },
+        });
+      }
+
+      ScrollTrigger.refresh();
+    }, 100);
+
+    return () => {
+      clearTimeout(timer);
+      if (fallbackTimer) clearTimeout(fallbackTimer);
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
+
   return (
     <section className="py-24 md:py-32 bg-gray-50/50 border-b border-gray-200 bg-grid">
       <div className="max-w-[1440px] mx-auto px-4 md:px-6">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-          <div className="max-w-xl">
-            <h2 className="font-heading text-3xl md:text-5xl font-semibold text-gray-900 mb-6 tracking-tight">
-              Everything you need.<br />
-              <span className="text-gray-400">Nothing you don&apos;t.</span>
-            </h2>
-            <p className="text-gray-500 text-lg leading-relaxed">
-              We stripped away the agency bloat. No account managers, no jargon.
-              Just direct access to senior engineers and world-class designers.
-            </p>
+        
+        {/* Header - Centered */}
+        <div ref={headerRef} className="text-center mb-16 md:mb-24">
+          <div className="inline-block bg-white border border-gray-200 rounded-full px-4 py-1.5 mb-6 shadow-sm">
+            <span className="text-sm font-semibold text-gray-900">Our Approach</span>
           </div>
-          <a
-            href="#"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-gray-900 border-b border-gray-900 pb-1 hover:text-gray-600 hover:border-gray-600 transition-all"
-          >
-            View Methodology
-            <HiArrowUpRight />
-          </a>
+          <h2 className="hero-framer-text max-w-3xl mx-auto mb-6">
+            Everything you need.<br className="hidden md:block" />
+            <span className="text-gray-400">Nothing you don&apos;t.</span>
+          </h2>
+          <p className="text-gray-500 text-lg max-w-2xl mx-auto leading-relaxed">
+            We stripped away the agency bloat. No account managers, no jargon.
+            Just direct access to senior engineers and world-class designers.
+          </p>
         </div>
 
         {/* 3-Column Feature Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Feature 1: Design */}
-          <div className="bg-white rounded-3xl p-2 border border-gray-200 shadow-sm hover:shadow-xl hover:border-gray-300 transition-all duration-500 group">
+          <div 
+            ref={(el) => {
+              cardsRef.current[0] = el;
+            }}
+            className="bg-white rounded-3xl p-2 border border-gray-200 shadow-sm hover:shadow-xl hover:border-gray-300 transition-all duration-500 group"
+            onMouseEnter={(e) => {
+              gsap.to(e.currentTarget, {
+                y: -8,
+                scale: 1.02,
+                duration: 0.3,
+                ease: "power2.out",
+              });
+            }}
+            onMouseLeave={(e) => {
+              gsap.to(e.currentTarget, {
+                y: 0,
+                scale: 1,
+                duration: 0.3,
+                ease: "power2.out",
+              });
+            }}
+          >
             <div className="h-64 bg-gray-50 rounded-2xl overflow-hidden relative border border-gray-100 mb-6">
               {/* Custom UI: Color Palette Selection */}
               <div className="absolute inset-0 flex items-center justify-center">
@@ -78,7 +179,28 @@ export default function WorkflowSection() {
           </div>
 
           {/* Feature 2: Development */}
-          <div className="bg-white rounded-3xl p-2 border border-gray-200 shadow-sm hover:shadow-xl hover:border-gray-300 transition-all duration-500 group">
+          <div 
+            ref={(el) => {
+              cardsRef.current[1] = el;
+            }}
+            className="bg-white rounded-3xl p-2 border border-gray-200 shadow-sm hover:shadow-xl hover:border-gray-300 transition-all duration-500 group"
+            onMouseEnter={(e) => {
+              gsap.to(e.currentTarget, {
+                y: -8,
+                scale: 1.02,
+                duration: 0.3,
+                ease: "power2.out",
+              });
+            }}
+            onMouseLeave={(e) => {
+              gsap.to(e.currentTarget, {
+                y: 0,
+                scale: 1,
+                duration: 0.3,
+                ease: "power2.out",
+              });
+            }}
+          >
             <div className="h-64 bg-[#0F0F11] rounded-2xl overflow-hidden relative border border-gray-800 mb-6 flex flex-col">
               {/* Custom UI: Code Editor */}
               <div className="flex items-center gap-1.5 px-4 py-3 border-b border-white/10">
@@ -126,7 +248,28 @@ export default function WorkflowSection() {
           </div>
 
           {/* Feature 3: Growth */}
-          <div className="bg-white rounded-3xl p-2 border border-gray-200 shadow-sm hover:shadow-xl hover:border-gray-300 transition-all duration-500 group">
+          <div 
+            ref={(el) => {
+              cardsRef.current[2] = el;
+            }}
+            className="bg-white rounded-3xl p-2 border border-gray-200 shadow-sm hover:shadow-xl hover:border-gray-300 transition-all duration-500 group"
+            onMouseEnter={(e) => {
+              gsap.to(e.currentTarget, {
+                y: -8,
+                scale: 1.02,
+                duration: 0.3,
+                ease: "power2.out",
+              });
+            }}
+            onMouseLeave={(e) => {
+              gsap.to(e.currentTarget, {
+                y: 0,
+                scale: 1,
+                duration: 0.3,
+                ease: "power2.out",
+              });
+            }}
+          >
             <div className="h-64 bg-gray-50 rounded-2xl overflow-hidden relative border border-gray-100 mb-6 flex items-center justify-center">
               {/* Custom UI: Revenue Card */}
               <div className="w-48 bg-white p-4 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-gray-100 transform scale-95 group-hover:scale-100 transition-all duration-500">
@@ -171,4 +314,3 @@ export default function WorkflowSection() {
     </section>
   );
 }
-

@@ -9,77 +9,76 @@ gsap.registerPlugin(ScrollTrigger);
 
 const testimonials = [
   {
-    name: "Chirag Kulkarni",
-    title: "CEO @Hobbes",
-    quote: "They have a wealth of knowledge / experience in the world of UX and leaned in heavily on all aspects of our brand.",
-    avatar: "https://ui-avatars.com/api/?name=Chirag+Kulkarni&background=3b82f6&color=fff&size=128",
+    name: "Sarah Chen",
+    title: "Founder @TechFlow",
+    quote: "They transformed our vision into a stunning web app in record time. The attention to detail and user experience is exceptional. Our users love it!",
+    avatar: "https://i.pravatar.cc/150?img=47",
   },
   {
-    name: "Valerio Di Palo",
-    title: "Founder @AI SuitUp",
-    quote: "The most impressive part was the attention to detail in their work.",
-    avatar: "https://ui-avatars.com/api/?name=Valerio+Di+Palo&background=1e293b&color=fff&size=128",
-    tag: "Geist",
+    name: "Marcus Rodriguez",
+    title: "CEO @CloudSync",
+    quote: "Working with this team was a game-changer. They built our mobile app with such precision and creativity. The app has exceeded all our expectations.",
+    avatar: "https://i.pravatar.cc/150?img=12",
   },
   {
-    name: "Jorge Villafuerte",
-    title: "Director of Technology @Avantpage",
-    quote: "The company's ability to efficiently understand and align with a client's vision is indeed impressive.",
-    avatar: "https://ui-avatars.com/api/?name=Jorge+Villafuerte&background=0f172a&color=fff&size=128",
+    name: "Emily Watson",
+    title: "Product Lead @DataViz",
+    quote: "The best design and development team we've worked with. They understood our brand perfectly and delivered a product that truly represents who we are.",
+    avatar: "https://i.pravatar.cc/150?img=45",
   },
   {
-    name: "Luka Pecavar",
-    title: "Founder @Manyreach",
-    quote: "A whole new user interface was designed in 30 days. Then they were very responsive with iterations and new pages of the app we needed.",
-    avatar: "https://ui-avatars.com/api/?name=Luka+Pecavar&background=475569&color=fff&size=128",
+    name: "James Park",
+    title: "CTO @FinTech Solutions",
+    quote: "Incredible work on our web platform. Fast, scalable, and beautifully designed. Our conversion rates have increased by 40% since launch.",
+    avatar: "https://i.pravatar.cc/150?img=33",
   },
   {
-    name: "Samanyou Garg",
-    title: "CEO @Writesonic",
-    quote: "Their designs consistently balanced aesthetics with functionality and business objectives.",
-    avatar: "https://ui-avatars.com/api/?name=Samanyou+Garg&background=1e293b&color=fff&size=128",
+    name: "Sophie Laurent",
+    title: "Founder @DesignStudio",
+    quote: "They brought our app idea to life with such elegance. The UI/UX is flawless, and the code quality is outstanding. Highly recommend!",
+    avatar: "https://i.pravatar.cc/150?img=20",
   },
   {
-    name: "Balaji Kummari",
-    title: "CTO @ScaleJobs",
-    quote: "What stood out was how much time B getting to know our customers before anything.",
-    avatar: "https://ui-avatars.com/api/?name=Balaji+Kummari&background=3b82f6&color=fff&size=128",
+    name: "David Kim",
+    title: "Head of Product @StartupHub",
+    quote: "Professional, creative, and incredibly talented. They delivered our MVP ahead of schedule and it's been a huge success with our investors.",
+    avatar: "https://i.pravatar.cc/150?img=15",
   },
   {
-    name: "Agarwal",
-    title: "Founder @Sybill",
-    quote: "working with the Bricx team, their attention nd great UI/UX sense and taste enabled a inp of our product. Highly recommend!",
-    avatar: "https://ui-avatars.com/api/?name=Agarwal&background=0f172a&color=fff&size=128",
+    name: "Isabella Martinez",
+    title: "CEO @HealthTech",
+    quote: "The mobile app they built for us is absolutely beautiful and performs flawlessly. Our users can't stop raving about the experience.",
+    avatar: "https://i.pravatar.cc/150?img=9",
   },
   {
-    name: "Priyanshu Tanwar",
-    title: "Head of Product @Upsurge Labs",
-    quote: "Bricx got truly obsessed with our product and went out of their way to make sure our expectations were met.",
-    avatar: "https://ui-avatars.com/api/?name=Priyanshu+Tanwar&background=475569&color=fff&size=128",
+    name: "Alex Thompson",
+    title: "Founder @EcoApp",
+    quote: "Outstanding work on both our web and mobile platforms. They truly understand modern design principles and best development practices.",
+    avatar: "https://i.pravatar.cc/150?img=51",
   },
   {
-    name: "Mike Nikles",
-    title: "Founder @Webstone Technologies",
-    quote: "They delivered fantastic work and always kept us updated and informed.",
-    avatar: "https://ui-avatars.com/api/?name=Mike+Nikles&background=3b82f6&color=fff&size=128",
+    name: "Priya Sharma",
+    title: "Product Director @SaaS Platform",
+    quote: "They transformed our outdated platform into a modern, user-friendly application. The results speak for themselves - 60% increase in user engagement.",
+    avatar: "https://i.pravatar.cc/150?img=27",
   },
   {
-    name: "Frederic Jean-Bart",
-    title: "CEO @Performance Partners",
-    quote: "Bricx delivered the website on time and according to the specifications. I loved the quality of the work.",
-    avatar: "https://ui-avatars.com/api/?name=Frederic+Jean-Bart&background=1e293b&color=fff&size=128",
+    name: "Michael Chen",
+    title: "CTO @AI Innovations",
+    quote: "Exceptional team with deep expertise in both design and development. They delivered a product that's both beautiful and highly functional.",
+    avatar: "https://i.pravatar.cc/150?img=38",
   },
   {
-    name: "Emmett Cooke",
-    title: "Director @Pixelflow",
-    quote: "Their speed and incredibly high quality of work, as well as industry knowledge, stood out.",
-    avatar: "https://ui-avatars.com/api/?name=Emmett+Cooke&background=0f172a&color=fff&size=128",
+    name: "Olivia Brown",
+    title: "Founder @Creative Labs",
+    quote: "Working with them was seamless. They took our complex requirements and turned them into an intuitive, beautiful application. Simply amazing!",
+    avatar: "https://i.pravatar.cc/150?img=23",
   },
   {
-    name: "Laxman Singh",
-    title: "CTO @BTR Labs Inc",
-    quote: "Bricx listens carefully and always comes up with creative ideas. Their thought process is impressive.",
-    avatar: "https://ui-avatars.com/api/?name=Laxman+Singh&background=f59e0b&color=fff&size=128",
+    name: "Ryan O'Connor",
+    title: "Head of Engineering @ScaleUp",
+    quote: "The best development partner we've had. Clean code, modern architecture, and stunning design. They set the bar incredibly high.",
+    avatar: "https://i.pravatar.cc/150?img=16",
   },
 ];
 
@@ -122,9 +121,9 @@ export default function Testimonials() {
     >
       <div className="max-w-[1440px] mx-auto px-6">
         <div ref={headerRef} className="text-center mb-16">
-          <h2 className="font-heading text-sm font-medium text-gray-500 uppercase tracking-wider mb-4">
-            Testimonials
-          </h2>
+          <div className="inline-block bg-white border border-gray-200 rounded-full px-4 py-1.5 mb-6 shadow-sm">
+            <span className="text-sm font-semibold text-gray-900">Testimonials</span>
+          </div>
           <h3 className="hero-framer-text max-w-3xl mx-auto">
             Don&apos;t Take Our Word. Take Their&apos;s.
           </h3>
@@ -140,11 +139,25 @@ export default function Testimonials() {
             {[...testimonials, ...testimonials].map((testimonial, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 w-[380px] mx-2 bg-gray-50 rounded-2xl border border-gray-100 p-6 hover:border-gray-200 transition-colors"
+                className="flex-shrink-0 w-[380px] mx-2 rounded-2xl p-6 cursor-pointer relative overflow-hidden group"
+                style={{
+                  background: "rgba(255, 255, 255, 0.7)",
+                  backdropFilter: "blur(20px)",
+                  WebkitBackdropFilter: "blur(20px)",
+                  border: "1px solid rgba(255, 255, 255, 0.3)",
+                  boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.1)",
+                }}
                 onMouseEnter={(e) => {
                   gsap.to(e.currentTarget, {
                     y: -8,
                     scale: 1.02,
+                    duration: 0.3,
+                    ease: "power2.out",
+                  });
+                  gsap.to(e.currentTarget, {
+                    background: "rgba(255, 255, 255, 0.85)",
+                    borderColor: "rgba(255, 255, 255, 0.5)",
+                    boxShadow: "0 12px 40px 0 rgba(0, 0, 0, 0.15)",
                     duration: 0.3,
                     ease: "power2.out",
                   });
@@ -156,25 +169,33 @@ export default function Testimonials() {
                     duration: 0.3,
                     ease: "power2.out",
                   });
+                  gsap.to(e.currentTarget, {
+                    background: "rgba(255, 255, 255, 0.7)",
+                    borderColor: "rgba(255, 255, 255, 0.3)",
+                    boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.1)",
+                    duration: 0.3,
+                    ease: "power2.out",
+                  });
                 }}
               >
-                <div className="flex items-start justify-between mb-3">
-                  <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    on Clutch
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-3 mb-4">
+                {/* Animated gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                
+                {/* Shine effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none"></div>
+                
+                <div className="relative z-10">
+                <div className="flex items-center gap-4 mb-4">
                   <img
                     src={testimonial.avatar}
                     alt={testimonial.name}
-                    className="w-12 h-12 rounded-full object-cover"
+                    className="w-14 h-14 rounded-full object-cover border-2 border-gray-100"
                   />
                   <div>
-                    <div className="text-sm font-semibold text-gray-900">
+                    <div className="text-base font-semibold text-gray-900">
                       {testimonial.name}
                     </div>
-                    <div className="text-xs text-gray-500">
+                    <div className="text-sm text-gray-500">
                       {testimonial.title}
                     </div>
                   </div>
@@ -184,38 +205,18 @@ export default function Testimonials() {
                   &quot;{testimonial.quote}&quot;
                 </p>
 
-                {testimonial.tag && (
-                  <div className="mb-4">
-                    <span className="inline-block px-2 py-1 text-xs font-medium bg-black text-white rounded">
-                      {testimonial.tag}
-                    </span>
-                  </div>
-                )}
-
-                <a
-                  href="#"
-                  className="flex items-center gap-2 text-xs text-gray-600 hover:text-gray-900 transition-colors group"
-                >
-                  <span>Read full review on clutch</span>
-                  <div className="flex items-center gap-1">
+                <div className="flex items-center gap-1 text-yellow-500">
+                  {[...Array(5)].map((_, i) => (
                     <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="group-hover:translate-x-1 transition-transform"
+                      key={i}
+                      className="w-4 h-4 fill-current"
+                      viewBox="0 0 20 20"
                     >
-                      <path
-                        d="M6 12L10 8L6 4"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
                     </svg>
-                  </div>
-                </a>
+                  ))}
+                </div>
+                </div>
               </div>
             ))}
           </Marquee>

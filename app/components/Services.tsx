@@ -84,10 +84,14 @@ function WebsiteDesignVisual() {
       ease: "power2.inOut",
     });
     
-    gsap.to(circleRef.current, {
-      scale: [1, 1.2, 1],
-      duration: 2,
-      repeat: -1,
+    const circleTl = gsap.timeline({ repeat: -1 });
+    circleTl.to(circleRef.current, {
+      scale: 1.2,
+      duration: 1,
+      ease: "power2.inOut",
+    }).to(circleRef.current, {
+      scale: 1,
+      duration: 1,
       ease: "power2.inOut",
     });
   }, []);
@@ -152,16 +156,27 @@ function WebDevVisual() {
   useEffect(() => {
     const tl = gsap.timeline({ repeat: -1 });
     tl.to([codeLine1Ref.current, codeLine2Ref.current, codeLine3Ref.current], {
-      opacity: [0.5, 1, 0.5],
-      duration: 1,
+      opacity: 1,
+      duration: 0.5,
+      stagger: 0.2,
+      ease: "power2.inOut",
+    })
+    .to([codeLine1Ref.current, codeLine2Ref.current, codeLine3Ref.current], {
+      opacity: 0.5,
+      duration: 0.5,
       stagger: 0.2,
       ease: "power2.inOut",
     });
     
-    gsap.to(cursorRef.current, {
-      opacity: [1, 0, 1],
-      duration: 1,
-      repeat: -1,
+    const cursorTl = gsap.timeline({ repeat: -1 });
+    cursorTl.to(cursorRef.current, {
+      opacity: 0,
+      duration: 0.5,
+      ease: "power2.inOut",
+    })
+    .to(cursorRef.current, {
+      opacity: 1,
+      duration: 0.5,
       ease: "power2.inOut",
     });
   }, []);
@@ -212,20 +227,29 @@ function AppDevVisual() {
     
     icons.forEach((icon, i) => {
       if (icon) {
-        gsap.to(icon, {
-          y: [0, -8, 0],
-          duration: 1.5,
-          repeat: -1,
-          delay: i * 0.2,
+        const iconTl = gsap.timeline({ repeat: -1, delay: i * 0.2 });
+        iconTl.to(icon, {
+          y: -8,
+          duration: 0.75,
+          ease: "power2.inOut",
+        })
+        .to(icon, {
+          y: 0,
+          duration: 0.75,
           ease: "power2.inOut",
         });
       }
     });
     
-    gsap.to(screenRef.current, {
-      scale: [1, 1.02, 1],
-      duration: 2,
-      repeat: -1,
+    const screenTl = gsap.timeline({ repeat: -1 });
+    screenTl.to(screenRef.current, {
+      scale: 1.02,
+      duration: 1,
+      ease: "power2.inOut",
+    })
+    .to(screenRef.current, {
+      scale: 1,
+      duration: 1,
       ease: "power2.inOut",
     });
   }, []);
@@ -559,15 +583,15 @@ export default function Services() {
                    <div className="flex gap-3 mb-6">
                      {service.icons.map((IconData, i) => (
                        <div key={i} className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center border border-gray-100 shadow-sm">
-                         {IconData.type === "image" ? (
+                         {"src" in IconData && IconData.src ? (
                            <img 
                              src={IconData.src} 
                              alt={IconData.alt || "Logo"} 
                              className={IconData.className || "w-5 h-5 object-contain"}
                            />
-                         ) : (
-                           <IconData.Icon className={`w-5 h-5 ${IconData.color.includes('text') ? IconData.color : 'text-gray-700'}`} />
-                         )}
+                         ) : "Icon" in IconData && IconData.Icon ? (
+                           <IconData.Icon className={`w-5 h-5 ${IconData.color && IconData.color.includes('text') ? IconData.color : 'text-gray-700'}`} />
+                         ) : null}
                        </div>
                      ))}
                    </div>

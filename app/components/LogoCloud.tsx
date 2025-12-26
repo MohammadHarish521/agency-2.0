@@ -54,69 +54,71 @@ export default function LogoCloud() {
           Trusted by engineering teams at
         </p>
       </div>
-      <div ref={marqueeRef} className="relative flex overflow-x-hidden group">
-        <div className="animate-marquee whitespace-nowrap flex items-center gap-16 px-6">
-          {/* Set 1 */}
-          {logos.map((logo, index) => {
-            const IconComponent = logo.icon;
-            return (
-              <div
-                key={`set1-${index}`}
-                className="flex items-center gap-2 opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer"
-                onMouseEnter={(e) => {
-                  gsap.to(e.currentTarget, {
-                    scale: 1.1,
-                    y: -4,
-                    duration: 0.3,
-                    ease: "power2.out",
-                  });
-                }}
-                onMouseLeave={(e) => {
-                  gsap.to(e.currentTarget, {
-                    scale: 1,
-                    y: 0,
-                    duration: 0.3,
-                    ease: "power2.out",
-                  });
-                }}
-              >
-                <IconComponent className="w-6 h-6" />
-                <span className="font-bold text-xl tracking-tight">{logo.name}</span>
-              </div>
-            );
-          })}
-          {/* Set 2 (Duplicate for loop) */}
-          {logos.map((logo, index) => {
-            const IconComponent = logo.icon;
-            return (
-              <div
-                key={`set2-${index}`}
-                className="flex items-center gap-2 opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer"
-                onMouseEnter={(e) => {
-                  gsap.to(e.currentTarget, {
-                    scale: 1.1,
-                    y: -4,
-                    duration: 0.3,
-                    ease: "power2.out",
-                  });
-                }}
-                onMouseLeave={(e) => {
-                  gsap.to(e.currentTarget, {
-                    scale: 1,
-                    y: 0,
-                    duration: 0.3,
-                    ease: "power2.out",
-                  });
-                }}
-              >
-                <IconComponent className="w-6 h-6" />
-                <span className="font-bold text-xl tracking-tight">{logo.name}</span>
-              </div>
-            );
-          })}
+      <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16">
+        <div ref={marqueeRef} className="relative flex overflow-x-hidden group">
+          <div className="animate-marquee whitespace-nowrap flex items-center gap-16">
+            {/* Set 1 */}
+            {logos.map((logo, index) => {
+              const IconComponent = logo.icon;
+              return (
+                <div
+                  key={`set1-${index}`}
+                  className="flex items-center gap-2 opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer"
+                  onMouseEnter={(e) => {
+                    gsap.to(e.currentTarget, {
+                      scale: 1.1,
+                      y: -4,
+                      duration: 0.3,
+                      ease: "power2.out",
+                    });
+                  }}
+                  onMouseLeave={(e) => {
+                    gsap.to(e.currentTarget, {
+                      scale: 1,
+                      y: 0,
+                      duration: 0.3,
+                      ease: "power2.out",
+                    });
+                  }}
+                >
+                  <IconComponent className="w-6 h-6" />
+                  <span className="font-bold text-xl tracking-tight">{logo.name}</span>
+                </div>
+              );
+            })}
+            {/* Set 2 (Duplicate for loop) */}
+            {logos.map((logo, index) => {
+              const IconComponent = logo.icon;
+              return (
+                <div
+                  key={`set2-${index}`}
+                  className="flex items-center gap-2 opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer"
+                  onMouseEnter={(e) => {
+                    gsap.to(e.currentTarget, {
+                      scale: 1.1,
+                      y: -4,
+                      duration: 0.3,
+                      ease: "power2.out",
+                    });
+                  }}
+                  onMouseLeave={(e) => {
+                    gsap.to(e.currentTarget, {
+                      scale: 1,
+                      y: 0,
+                      duration: 0.3,
+                      ease: "power2.out",
+                    });
+                  }}
+                >
+                  <IconComponent className="w-6 h-6" />
+                  <span className="font-bold text-xl tracking-tight">{logo.name}</span>
+                </div>
+              );
+            })}
+          </div>
+          <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
         </div>
-        <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-white to-transparent z-10"></div>
-        <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-white to-transparent z-10"></div>
       </div>
     </section>
   );

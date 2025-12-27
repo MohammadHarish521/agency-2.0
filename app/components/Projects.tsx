@@ -21,7 +21,7 @@ function ProjectCard({ project, index = 0 }: ProjectCardProps) {
   return (
     <div
       ref={cardRef}
-      className="group flex-shrink-0 w-[600px] mx-4 rounded-[2.5rem] bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-row cursor-pointer h-[400px]"
+      className="group flex-shrink-0 w-[600px] mx-4 rounded-[2.5rem] bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-200 overflow-hidden flex flex-row cursor-pointer h-[400px]"
       onMouseEnter={(e) => {
         gsap.to(e.currentTarget, {
           y: -8,

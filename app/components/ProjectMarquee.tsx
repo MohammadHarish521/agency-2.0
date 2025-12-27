@@ -74,13 +74,13 @@ export default function ProjectMarquee() {
                 });
               }}
             >
-              <div className="relative w-96 h-64 rounded-2xl overflow-hidden bg-white border border-gray-100 shadow-sm group-hover:shadow-xl transition-shadow duration-300">
+              <div className="relative w-96 h-64 rounded-2xl overflow-hidden bg-white border border-gray-100 shadow-sm group-hover:shadow-xl transition-shadow duration-200">
                 <img
                   src={project.image}
                   alt={project.name}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                   <div className="absolute bottom-4 left-4 right-4">
                     <h3 className="text-white font-semibold text-lg">
                       {project.name}

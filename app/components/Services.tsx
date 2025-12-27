@@ -544,7 +544,7 @@ export default function Services() {
                 ref={(el) => {
                   cardsRef.current[index] = el;
                 }}
-                className="group rounded-[2.5rem] bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col"
+                className="group rounded-[2.5rem] bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-200 overflow-hidden flex flex-col"
                 onMouseEnter={(e) => {
                   gsap.to(e.currentTarget, {
                     y: -8,

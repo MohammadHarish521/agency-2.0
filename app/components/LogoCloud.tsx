@@ -63,7 +63,7 @@ export default function LogoCloud() {
               return (
                 <div
                   key={`set1-${index}`}
-                  className="flex items-center gap-2 opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer"
+                  className="flex items-center gap-2 opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-200 cursor-pointer"
                   onMouseEnter={(e) => {
                     gsap.to(e.currentTarget, {
                       scale: 1.1,
@@ -92,7 +92,7 @@ export default function LogoCloud() {
               return (
                 <div
                   key={`set2-${index}`}
-                  className="flex items-center gap-2 opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer"
+                  className="flex items-center gap-2 opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-200 cursor-pointer"
                   onMouseEnter={(e) => {
                     gsap.to(e.currentTarget, {
                       scale: 1.1,

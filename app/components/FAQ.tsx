@@ -98,7 +98,7 @@ export default function FAQ() {
               ref={(el) => {
                 if (el) faqItemsRef.current[index] = el;
               }}
-              className="bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300"
+              className="bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200"
               onMouseEnter={(e) => {
                 gsap.to(e.currentTarget, {
                   x: 5,
@@ -122,7 +122,7 @@ export default function FAQ() {
                   {faq.question}
                 </span>
                 <div
-                  className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-colors duration-300 flex-shrink-0 ${
+                  className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-colors duration-200 flex-shrink-0 ${
                     openIndex === index
                       ? "bg-gray-900 text-white"
                       : "bg-gray-100 text-gray-900 group-hover:bg-gray-200"
@@ -137,7 +137,7 @@ export default function FAQ() {
               </button>
 
               <div
-                className={`grid transition-all duration-300 ease-in-out ${
+                className={`grid transition-all duration-200 ease-in-out ${
                   openIndex === index
                     ? "grid-rows-[1fr] opacity-100"
                     : "grid-rows-[0fr] opacity-0"

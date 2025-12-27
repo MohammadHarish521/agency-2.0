@@ -209,7 +209,7 @@ export default function Pricing() {
           {/* Starter Card */}
           <div 
             ref={(el) => { cardsRef.current[0] = el; }}
-            className="bg-white rounded-[2.5rem] p-8 border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col"
+            className="bg-white rounded-[2.5rem] p-8 border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-200 flex flex-col"
             onMouseEnter={(e) => {
               gsap.to(e.currentTarget, {
                 y: -8,
@@ -288,7 +288,7 @@ export default function Pricing() {
           {/* Professional Card - Most Popular */}
           <div 
             ref={(el) => { cardsRef.current[1] = el; }}
-            className="bg-white rounded-[2.5rem] p-8 border-2 border-gray-900 shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col relative"
+            className="bg-white rounded-[2.5rem] p-8 border-2 border-gray-900 shadow-xl hover:shadow-2xl transition-all duration-200 flex flex-col relative"
             onMouseEnter={(e) => {
               gsap.to(e.currentTarget, {
                 y: -8,
@@ -366,7 +366,7 @@ export default function Pricing() {
           {/* Enterprise Card */}
           <div 
             ref={(el) => { cardsRef.current[2] = el; }}
-            className="bg-white rounded-[2.5rem] p-8 border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col"
+            className="bg-white rounded-[2.5rem] p-8 border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-200 flex flex-col"
             onMouseEnter={(e) => {
               gsap.to(e.currentTarget, {
                 y: -8,

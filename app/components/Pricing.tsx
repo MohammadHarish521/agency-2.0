@@ -263,7 +263,7 @@ export default function Pricing() {
             </ul>
 
             <button 
-              className="w-full bg-gray-900 text-white px-6 py-3.5 rounded-full hover:bg-gray-800 transition-all shadow-lg mt-auto"
+              className="w-full bg-white text-gray-900 border border-gray-200 px-6 py-3.5 rounded-full hover:bg-gray-50 transition-all shadow-lg mt-auto"
               onMouseEnter={(e) => {
                 gsap.to(e.currentTarget, {
                   scale: 1.05,
@@ -341,7 +341,7 @@ export default function Pricing() {
             </ul>
 
             <button 
-              className="w-full bg-gray-900 text-white px-6 py-3.5 rounded-full hover:bg-gray-800 transition-all shadow-lg shadow-gray-900/20 mt-auto"
+              className="w-full bg-gray-900 text-white px-6 py-3.5 rounded-full shadow-lg shadow-gray-900/20 mt-auto"
               onMouseEnter={(e) => {
                 gsap.to(e.currentTarget, {
                   scale: 1.05,
@@ -420,7 +420,7 @@ export default function Pricing() {
             </ul>
 
             <button 
-              className="w-full bg-gray-900 text-white px-6 py-3.5 rounded-full hover:bg-gray-800 transition-all shadow-lg mt-auto"
+              className="w-full bg-white text-gray-900 border border-gray-200 px-6 py-3.5 rounded-full hover:bg-gray-50 transition-all shadow-lg mt-auto"
               onMouseEnter={(e) => {
                 gsap.to(e.currentTarget, {
                   scale: 1.05,

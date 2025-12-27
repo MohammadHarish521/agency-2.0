@@ -163,12 +163,9 @@ export default function DarkVeil({
         uScan: { value: scanlineIntensity },
         uScanFreq: { value: scanlineFrequency },
         uWarp: { value: warpAmount },
-        uColor: { value: new Vec2().set(r, g).set(r, g, b) }, // OGL handles vec3 as array or set
+        uColor: { value: [r, g, b] }, // vec3 uniform as array
       },
     });
-
-    // Correctly setting vec3 uniform
-    program.uniforms.uColor.value = [r, g, b];
 
     const mesh = new Mesh(gl, { geometry, program });
 

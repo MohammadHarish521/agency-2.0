@@ -20,6 +20,20 @@ const contactLinks: FooterLink[] = [
 ];
 
 function FooterColumn({ title, links }: { title: string; links: FooterLink[] }) {
+  const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    // Only handle anchor links (hash links)
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    }
+  };
+
   return (
     <div>
       <div className="text-sm font-semibold text-gray-900 mb-5">{title}</div>
@@ -31,6 +45,7 @@ function FooterColumn({ title, links }: { title: string; links: FooterLink[] }) 
               target={link.href.startsWith("http") ? "_blank" : undefined}
               rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
               className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+              onClick={(e) => handleAnchorClick(e, link.href)}
             >
               {link.label}
             </a>

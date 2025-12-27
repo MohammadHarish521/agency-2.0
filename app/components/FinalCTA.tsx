@@ -61,8 +61,11 @@ export default function FinalCTA() {
           Studio.
         </p>
         <div ref={buttonsRef} className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <button 
-            className="bg-gray-900 text-white px-8 py-4 rounded-full text-base hover:bg-gray-800 transition-all shadow-xl"
+          <a 
+            href="https://calendly.com/xharish52/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-gray-900 text-white px-8 py-4 rounded-full text-base hover:bg-gray-800 transition-all shadow-xl inline-block"
             onMouseEnter={(e) => {
               gsap.to(e.currentTarget, {
                 scale: 1.05,
@@ -81,9 +84,11 @@ export default function FinalCTA() {
             }}
           >
             Get Started Now
-          </button>
+          </a>
           <a
-            href="#"
+            href="https://calendly.com/xharish52/30min"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-gray-600 font-medium hover:text-gray-900 transition-colors"
             onMouseEnter={(e) => {
               gsap.to(e.currentTarget, {

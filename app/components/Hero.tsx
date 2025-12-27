@@ -77,8 +77,11 @@ export default function Hero() {
 
         {/* Hero CTA */}
         <div ref={ctaRef} className="flex items-center justify-center w-full">
-          <button 
-            className="bg-gray-900 text-white px-8 py-4 rounded-full text-base hover:bg-gray-800 transition-all shadow-xl shadow-gray-200/50 min-w-[200px]"
+          <a 
+            href="https://calendly.com/xharish52/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-gray-900 text-white px-8 py-4 rounded-full text-base hover:bg-gray-800 transition-all shadow-xl shadow-gray-200/50 min-w-[200px] inline-block text-center"
             onMouseEnter={(e) => {
               gsap.to(e.currentTarget, {
                 scale: 1.05,
@@ -109,7 +112,7 @@ export default function Hero() {
             }}
           >
             Book a Free MVP Call
-          </button>
+          </a>
         </div>
       </div>
     </main>

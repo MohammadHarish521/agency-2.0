@@ -79,7 +79,9 @@ export default function Navbar() {
             Work
           </a>
           <a
-            href="#"
+            href="https://calendly.com/xharish52/30min"
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-gray-900 text-white px-5 py-2.5 rounded-full text-sm hover:bg-gray-800 transition-all shadow-lg shadow-gray-900/10"
             onMouseEnter={(e) => {
               gsap.to(e.currentTarget, {

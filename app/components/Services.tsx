@@ -623,7 +623,10 @@ export default function Services() {
 
         {/* Footer Actions */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <button 
+          <a 
+            href="https://calendly.com/xharish52/30min"
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center gap-2 bg-gray-900 text-white px-8 py-3.5 rounded-full hover:bg-gray-800 transition-all shadow-lg hover:shadow-gray-900/20"
             onMouseEnter={(e) => {
               gsap.to(e.currentTarget, {
@@ -656,7 +659,7 @@ export default function Services() {
           >
             <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
             Book Strategy Call
-          </button>
+          </a>
           <button 
             className="flex items-center gap-2 bg-white text-gray-900 border border-gray-200 px-8 py-3.5 rounded-full hover:bg-gray-50 transition-all"
             onMouseEnter={(e) => {

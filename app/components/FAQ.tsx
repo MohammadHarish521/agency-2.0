@@ -158,8 +158,11 @@ export default function FAQ() {
           <p className="text-gray-900 font-medium mb-6 text-lg">
             Still not sure?
           </p>
-          <button
-            className="bg-gray-900 text-white px-8 py-3.5 rounded-full hover:bg-gray-800 transition-all shadow-lg"
+          <a
+            href="https://calendly.com/xharish52/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-gray-900 text-white px-8 py-3.5 rounded-full hover:bg-gray-800 transition-all shadow-lg"
             onMouseEnter={(e) => {
               gsap.to(e.currentTarget, {
                 scale: 1.05,
@@ -178,7 +181,7 @@ export default function FAQ() {
             }}
           >
             Book a Call
-          </button>
+          </a>
         </div>
       </div>
     </section>

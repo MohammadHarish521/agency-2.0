@@ -51,7 +51,7 @@ export default function Hero() {
     <main className="pt-40 md:pt-48 px-4 md:px-6 max-w-[1440px] mx-auto overflow-hidden">
       <div className="text-center max-w-5xl mx-auto mb-20 md:mb-32">
         
-        {/* Founders Badge */}
+        {/* Available Badge */}
         <div ref={badgeRef} className="inline-flex items-center justify-center mb-10">
           <div className="flex items-center gap-3 px-4 py-2 rounded-full bg-white shadow-md border border-gray-100 hover:shadow-lg transition-all cursor-default">
             <span className="relative flex h-3 w-3">
@@ -59,7 +59,7 @@ export default function Hero() {
               <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
             </span>
             <span className="text-sm font-medium text-gray-800">
-              5 Founders booked the call this week
+              Available for New Projects
             </span>
           </div>
         </div>

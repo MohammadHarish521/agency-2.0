@@ -20,44 +20,56 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Animated Visual Components
 function BrandIdentityVisual() {
-  const color1Ref = useRef<HTMLDivElement>(null);
-  const color2Ref = useRef<HTMLDivElement>(null);
-  const color3Ref = useRef<HTMLDivElement>(null);
-  const logoRef = useRef<HTMLDivElement>(null);
+  const shape1Ref = useRef<HTMLDivElement>(null);
+  const shape2Ref = useRef<HTMLDivElement>(null);
+  const shape3Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
-    tl.to([color1Ref.current, color2Ref.current, color3Ref.current], {
+    // Elegant morphing shapes - clean and sophisticated
+    const tl = gsap.timeline({ repeat: -1, repeatDelay: 0.8 });
+    
+    // Morph between different shapes smoothly
+    tl.to([shape1Ref.current, shape2Ref.current, shape3Ref.current], {
+      borderRadius: "50%",
+      rotate: 45,
       scale: 1.1,
-      duration: 0.5,
-      stagger: 0.1,
+      duration: 1.2,
+      stagger: 0.15,
       ease: "power2.inOut",
     })
-    .to([color1Ref.current, color2Ref.current, color3Ref.current], {
+    .to([shape1Ref.current, shape2Ref.current, shape3Ref.current], {
+      borderRadius: "0.5rem",
+      rotate: 0,
       scale: 1,
-      duration: 0.5,
-      stagger: 0.1,
+      duration: 1.2,
+      stagger: 0.15,
       ease: "power2.inOut",
-    });
-    
-    gsap.to(logoRef.current, {
-      rotation: 360,
-      duration: 8,
-      repeat: -1,
-      ease: "none",
+    })
+    .to([shape1Ref.current, shape2Ref.current, shape3Ref.current], {
+      borderRadius: "0%",
+      rotate: -45,
+      scale: 0.9,
+      duration: 1.2,
+      stagger: 0.15,
+      ease: "power2.inOut",
+    })
+    .to([shape1Ref.current, shape2Ref.current, shape3Ref.current], {
+      borderRadius: "0.5rem",
+      rotate: 0,
+      scale: 1,
+      duration: 1.2,
+      stagger: 0.15,
+      ease: "power2.inOut",
     });
   }, []);
 
   return (
     <div className="relative w-full h-full bg-gradient-to-br from-purple-50 to-pink-50 flex items-center justify-center p-8">
-      {/* Animated Logo Circle */}
-      <div ref={logoRef} className="absolute w-20 h-20 border-4 border-purple-600 rounded-full"></div>
-      
-      {/* Color Swatches */}
-      <div className="flex gap-4 items-center">
-        <div ref={color1Ref} className="w-16 h-20 bg-purple-600 rounded-lg shadow-lg"></div>
-        <div ref={color2Ref} className="w-16 h-20 bg-pink-500 rounded-lg shadow-lg"></div>
-        <div ref={color3Ref} className="w-16 h-20 bg-rose-400 rounded-lg shadow-lg"></div>
+      {/* Elegant morphing brand shapes */}
+      <div className="flex gap-3 items-center">
+        <div ref={shape1Ref} className="w-14 h-14 bg-purple-600 rounded-lg shadow-md"></div>
+        <div ref={shape2Ref} className="w-14 h-14 bg-pink-500 rounded-lg shadow-md"></div>
+        <div ref={shape3Ref} className="w-14 h-14 bg-rose-400 rounded-lg shadow-md"></div>
       </div>
     </div>
   );

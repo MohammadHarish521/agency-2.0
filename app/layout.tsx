@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Figtree } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import DarkVeil from "./components/DarkVeil";
 import "./globals.css";
 
@@ -30,6 +31,7 @@ export default function RootLayout({
           <DarkVeil hueShift={0} speed={0.5} />
         </div>
         {children}
+        <Analytics />
       </body>
     </html>
   );

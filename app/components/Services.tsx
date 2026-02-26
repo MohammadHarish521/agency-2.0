@@ -1,20 +1,18 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { 
-  SiAdobeillustrator, 
-  SiFigma, 
-  SiFramer, 
-  SiWebflow, 
-  SiBlender, 
-  SiAdobeaftereffects, 
-  SiNotion,
-  SiLinear
+import { useEffect, useRef } from "react";
+import { FaRobot } from "react-icons/fa";
+import { HiCodeBracket, HiCpuChip, HiCube } from "react-icons/hi2";
+import {
+    SiAdobeillustrator,
+    SiFramer,
+    SiLinear,
+    SiNotion,
+    SiOpenai,
+    SiWebflow
 } from "react-icons/si";
-import { HiCube, HiPresentationChartBar, HiCodeBracket } from "react-icons/hi2";
-import { FaMicrosoft } from "react-icons/fa";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -299,48 +297,46 @@ function AppDevVisual() {
   );
 }
 
-function PitchDeckVisual() {
-  const slide1Ref = useRef<HTMLDivElement>(null);
-  const slide2Ref = useRef<HTMLDivElement>(null);
-  const slide3Ref = useRef<HTMLDivElement>(null);
+function AIAgentsVisual() {
+  const gear1Ref = useRef<HTMLDivElement>(null);
+  const gear2Ref = useRef<HTMLDivElement>(null);
+  const botRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
-    tl.to([slide1Ref.current, slide2Ref.current, slide3Ref.current], {
-      x: -20,
-      opacity: 0.7,
-      duration: 0.5,
-      stagger: 0.1,
-      ease: "power2.inOut",
-    })
-    .to([slide1Ref.current, slide2Ref.current, slide3Ref.current], {
-      x: 0,
-      opacity: 1,
-      duration: 0.5,
-      stagger: 0.1,
-      ease: "power2.inOut",
-    });
+    if (gear1Ref.current) gsap.to(gear1Ref.current, { rotation: 360, duration: 4, ease: "linear", repeat: -1 });
+    if (gear2Ref.current) gsap.to(gear2Ref.current, { rotation: -360, duration: 4, ease: "linear", repeat: -1 });
+    if (botRef.current) gsap.to(botRef.current, { y: -10, duration: 1, ease: "power1.inOut", repeat: -1, yoyo: true });
   }, []);
 
   return (
-    <div className="relative w-full h-full bg-gradient-to-br from-gray-50 to-slate-50 flex items-center justify-center p-6 gap-2">
-      <div ref={slide1Ref} className="w-16 h-20 bg-white rounded shadow-lg border border-gray-200 flex flex-col items-center justify-center gap-1">
-        <div className="w-8 h-1 bg-gray-400 rounded"></div>
-        <div className="w-6 h-1 bg-gray-300 rounded"></div>
+    <div className="relative w-full h-full bg-gradient-to-br from-teal-50 to-emerald-50 flex items-center justify-center p-6 gap-4">
+      <div ref={gear1Ref} className="w-12 h-12 border-4 border-teal-500 border-dashed rounded-full opacity-60"></div>
+      <div ref={botRef} className="w-16 h-16 bg-white rounded-2xl shadow-lg border border-teal-100 flex items-center justify-center relative z-10">
+        <div className="w-8 h-8 bg-teal-600 rounded-lg flex flex-col items-center justify-center gap-1">
+          <div className="flex gap-1 mt-1">
+            <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
+            <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
+          </div>
+          <div className="w-3 h-1 bg-white rounded-full mt-0.5"></div>
+        </div>
       </div>
-      <div ref={slide2Ref} className="w-16 h-20 bg-white rounded shadow-lg border border-gray-200 flex flex-col items-center justify-center gap-1">
-        <div className="w-8 h-1 bg-gray-400 rounded"></div>
-        <div className="w-6 h-1 bg-gray-300 rounded"></div>
-      </div>
-      <div ref={slide3Ref} className="w-16 h-20 bg-white rounded shadow-lg border border-gray-200 flex flex-col items-center justify-center gap-1">
-        <div className="w-8 h-1 bg-gray-400 rounded"></div>
-        <div className="w-6 h-1 bg-gray-300 rounded"></div>
-      </div>
+      <div ref={gear2Ref} className="w-10 h-10 border-4 border-emerald-400 border-dashed rounded-full opacity-60"></div>
     </div>
   );
 }
 
 const services = [
+  {
+    title: "AI Agents & Automation",
+    description: "Streamline your workflow and supercharge efficiency with intelligent AI agents and custom automation.",
+    icons: [
+      { Icon: SiOpenai, color: "text-teal-600 bg-teal-50" },
+      { Icon: FaRobot, color: "text-emerald-500 bg-white" },
+      { Icon: HiCpuChip, color: "text-gray-900 bg-gray-100" },
+    ],
+    visual: AIAgentsVisual,
+    rotation: -1,
+  },
   {
     title: "Brand Identity",
     description: "Get a differentiated and unique brand identity to stand out your product from competitors.",
@@ -393,16 +389,6 @@ const services = [
     ],
     visual: AppDevVisual,
     rotation: -2.5,
-  },
-  {
-    title: "Pitch Deck & Collaterals",
-    description: "Fulfill all marketing design requirements with a team that feels like your own.",
-    icons: [
-      { Icon: FaMicrosoft, color: "text-orange-600 bg-white" },
-      { Icon: HiPresentationChartBar, color: "text-blue-500 bg-blue-50" },
-    ],
-    visual: PitchDeckVisual,
-    rotation: 1.2,
   },
 ];
 
